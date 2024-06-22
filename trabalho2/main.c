@@ -24,15 +24,15 @@ void inserirEsquerda(No *no, int valor) {
         novo->direita = NULL;                // Define o ponteiro da direita como NULL
         no->esquerda = novo;                 // Faz o ponteiro da esquerda apontar para o novo nó
     } else {
-        // Se já há nó à esquerda
+        // Se tem na esquerda
         if (valor < no->esquerda->conteudo)  // Se o valor é menor que o conteúdo do nó à esquerda
-            inserirEsquerda(no->esquerda, valor); // Chama recursivamente para inserir à esquerda
+            inserirEsquerda(no->esquerda, valor); // Chama para inserir à esquerda
         if (valor > no->esquerda->conteudo)  // Se o valor é maior que o conteúdo do nó à esquerda
-            inserirDireita(no->esquerda, valor); // Chama recursivamente para inserir à direita
+            inserirDireita(no->esquerda, valor); // Chama para inserir à direita
     }
 }
 
-// Função para inserir elemento à direita de um nó
+// Função para inserir elemento na direita de um nó
 void inserirDireita(No *no, int valor) {
     // Se não há nó à direita
     if (no->direita == NULL) {
@@ -44,9 +44,9 @@ void inserirDireita(No *no, int valor) {
     } else {
         // Se já há nó à direita
         if (valor > no->direita->conteudo)   // Se o valor é maior que o conteúdo do nó à direita
-            inserirDireita(no->direita, valor); // Chama recursivamente para inserir à direita
+            inserirDireita(no->direita, valor); // Chama para inserir à direita
         if (valor < no->direita->conteudo)   // Se o valor é menor que o conteúdo do nó à direita
-            inserirEsquerda(no->direita, valor); // Chama recursivamente para inserir à esquerda
+            inserirEsquerda(no->direita, valor); // Chama para inserir à esquerda
     }
 }
 
@@ -93,13 +93,13 @@ int tamanho(No *raiz) {
     if (raiz == NULL)
         return 0;
     else
-        // Calcula o tamanho recursivamente somando 1 (nó atual) com os tamanhos das subárvores esquerda e direita
+        // Calcula o tamanho somando 1 (nó atual) com os tamanhos das subárvores esquerda e direita
         return 1 + tamanho(raiz->esquerda) + tamanho(raiz->direita);
 }
 
 // Função para buscar um valor na árvore
 int buscar(No *raiz, int chave) {
-    // Se a raiz é NULL, o valor não foi encontrado
+    // Se a raiz é NULL, o valor não rtem
     if (raiz == NULL) {
         return 0;
     } else {
@@ -177,7 +177,7 @@ No* remover(No *raiz, int chave) {
     }
 }
 
-// Função para percorrer a árvore em pré-ordem (pre-order)
+// Função para percorrer a árvore em pré-ordem (crescente)
 void preOrdem(No *raiz) {
     // Se a raiz não é NULL
     if (raiz != NULL) {
@@ -187,7 +187,7 @@ void preOrdem(No *raiz) {
     }
 }
 
-// Função para percorrer a árvore em pós-ordem (post-order)
+// Função para percorrer a árvore em pós-ordem (decrescente)
 void posOrdem(No *raiz) {
     // Se a raiz não é NULL
     if (raiz != NULL) {
